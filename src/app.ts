@@ -1,9 +1,13 @@
 import express from 'express';
 import mongoose from 'mongoose';
 import config from './config';
-import routes from './routes'
+import routes from './routes';
+import fileUpload from "express-fileupload";
 
 const app = express();
+app.use(express.json());
+app.use(express.urlencoded({extended: true}));
+app.use(fileUpload());
 
 app.use('/api/v1/', routes);
 
